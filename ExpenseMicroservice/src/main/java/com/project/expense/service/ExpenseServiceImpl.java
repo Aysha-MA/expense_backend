@@ -1,13 +1,10 @@
 package com.project.expense.service;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -88,22 +85,14 @@ public class ExpenseServiceImpl implements ExpenseService {
 	}
 
 	/**
-	 * Retrieves a paginated list of all expenses for a specific user. If the
-	 * pageable parameter is null, a default pageable is used.
+	 * Retrieves a list of all expenses for a specific user.
 	 *
-	 * @param userId   the ID of the user whose expenses are to be retrieved
-	 * @param pageable the pagination information
-	 * @return a paginated list of expenses
+	 * @param userId the ID of the user whose expenses are to be retrieved
+	 * @return a list of expenses
 	 */
 	@Override
-	public Page<Expense> getAllExpenses(Long userId, Pageable pageable) {
-		if (pageable == null) {
-			pageable = PageRequest.of(0, 10, Sort.by(Sort.Order.desc("date")));
-		} else {
-			pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-					Sort.by(Sort.Order.desc("date")));
-		}
-		return expenseRepository.findByUserId(userId, pageable);
+	public List<Expense> getAllExpenses(Long userId) {
+	    return expenseRepository.findByUserId(userId); 
 	}
 
 	/**
@@ -118,7 +107,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 	public Double getTotalExpenses(Long userId) {
 		Double totalExpenses = expenseRepository.sumAmountByUserId(userId);
 		if (totalExpenses == null) {
-			throw new ExpenseNotFoundException(EXPENSE_NOT_FOUND_MESSAGE);
+			totalExpenses = 0.0;
 		}
 		return totalExpenses;
 	}
@@ -168,7 +157,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 	public List<Expense> getExpenseByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate) {
 		List<Expense> expenses = expenseRepository.findByUserIdAndDateBetween(userId, startDate, endDate);
 		if (expenses.isEmpty()) {
-			throw new ExpenseNotFoundException("No expenses found for the given date range");
+			return Collections.emptyList(); 
 		}
 		return expenses;
 	}

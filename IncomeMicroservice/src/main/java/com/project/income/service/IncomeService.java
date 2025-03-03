@@ -18,7 +18,7 @@ public interface IncomeService {
 
 	public abstract Income getIncome(Long id, Long userId);
 
-	public abstract Page<Income> getAllIncome(Long userId, Pageable pageable);
+	public abstract List<Income> getAllIncome(Long userId);
 
 	public abstract Double getTotalIncome(Long userId);
 

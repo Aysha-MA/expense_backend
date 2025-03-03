@@ -21,7 +21,7 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
 	@Query("SELECT SUM(i.amount) FROM Income i WHERE i.userId = :userId")
 	Double sumAmountByUserId(Long userId);
 
-	Page<Income> findByUserId(Long userId, Pageable pageable);
+	List<Income> findByUserId(Long userId);
 
 	List<Income> findByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate);
 

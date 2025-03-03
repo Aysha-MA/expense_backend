@@ -103,18 +103,15 @@ public class ExpenseMicroserviceApplicationTests {
 		});
 	}
 
-	@Test
-	public void testGetAllExpenses() {
-		Pageable pageable = PageRequest.of(0, 10, Sort.by(Sort.Order.desc("date")));
-		Page<Expense> page = new PageImpl<>(Arrays.asList(expense));
+    @Test
+    public void testGetAllExpenses() {
+        when(expenseRepository.findByUserId(1L)).thenReturn(Arrays.asList(expense));
 
-		when(expenseRepository.findByUserId(eq(1L), any(Pageable.class))).thenReturn(page);
+        List<Expense> expenses = expenseService.getAllExpenses(1L);
 
-		Page<Expense> expenses = expenseService.getAllExpenses(1L, pageable);
-
-		assertNotNull(expenses);
-		assertEquals(1, expenses.getTotalElements());
-	}
+        assertNotNull(expenses);
+        assertEquals(1, expenses.size());
+    }
 
 	@Test
 	public void testGetTotalExpenses() {

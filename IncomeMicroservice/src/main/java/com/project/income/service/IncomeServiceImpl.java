@@ -1,13 +1,10 @@
 package com.project.income.service;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,41 +67,30 @@ public class IncomeServiceImpl implements IncomeService {
 	}
 
 	/**
-	 * Retrieves a paginated list of all incomes for a specific user. If the
-	 * pageable parameter is null, a default pageable is used.
+	 * Retrieves a list of all incomes for a specific user.
 	 *
-	 * @param userId   the ID of the user whose incomes are to be retrieved
-	 * @param pageable the pagination information
-	 * @return a paginated list of incomes
+	 * @param userId the ID of the user whose incomes are to be retrieved
+	 * @return a list of incomes
 	 */
 	@Override
-	public Page<Income> getAllIncome(Long userId, Pageable pageable) {
-		if (pageable == null) {
-			pageable = PageRequest.of(0, 10, Sort.by(Sort.Order.desc("date")));
-		} else {
-			pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-					Sort.by(Sort.Order.desc("date")));
-		}
-		return incomeRepository.findByUserId(userId, pageable);
+	public List<Income> getAllIncome(Long userId) {
+	    return incomeRepository.findByUserId(userId); // Changed to return a list of incomes
 	}
-
 	/**
 	 * Retrieves the total amount of incomes for a specific user. If no incomes are
 	 * found, an IncomeNotFoundException is thrown.
 	 *
 	 * @param userId the ID of the user whose total incomes are to be retrieved
 	 * @return the total amount of incomes
-	 * @throws IncomeNotFoundException if no incomes are found
 	 */
 	@Override
 	public Double getTotalIncome(Long userId) {
-		Double totalIncome = incomeRepository.sumAmountByUserId(userId);
-		if (totalIncome == null) {
-			throw new IncomeNotFoundException("No income found for user ID: " + userId);
-		}
-		return totalIncome;
+	    Double totalIncome = incomeRepository.sumAmountByUserId(userId);
+	    if (totalIncome == null) {
+	        totalIncome = 0.0;
+	    }
+	    return totalIncome;
 	}
-
 	/**
 	 * Adds a new income for a specific user.
 	 *
@@ -168,7 +154,7 @@ public class IncomeServiceImpl implements IncomeService {
 	public List<Income> getIncomesByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate) {
 		List<Income> incomes = incomeRepository.findByUserIdAndDateBetween(userId, startDate, endDate);
 		if (incomes.isEmpty()) {
-			throw new IncomeNotFoundException("No incomes found for the given date range");
+			return Collections.emptyList(); 
 		}
 		return incomes;
 	}

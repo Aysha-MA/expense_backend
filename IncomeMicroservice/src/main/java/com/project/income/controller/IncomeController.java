@@ -3,8 +3,6 @@ package com.project.income.controller;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -85,15 +83,14 @@ public class IncomeController {
 	}
 
 	/**
-	 * Retrieves a paginated list of all incomes for a specific user.
+	 * Retrieves a list of all incomes for a specific user.
 	 *
-	 * @param userId   the ID of the user whose incomes are to be retrieved
-	 * @param pageable the pagination information
-	 * @return a paginated list of incomes
+	 * @param userId the ID of the user whose incomes are to be retrieved
+	 * @return a list of incomes
 	 */
 	@GetMapping("/getAll/{userId}")
-	public Page<Income> getAllIncome(@PathVariable Long userId, Pageable pageable) {
-		return incomeService.getAllIncome(userId, pageable);
+	public List<Income> getAllIncome(@PathVariable Long userId) {
+		return incomeService.getAllIncome(userId); // Changed to return a list of incomes
 	}
 
 	/**

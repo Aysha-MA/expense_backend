@@ -85,17 +85,15 @@ public class ExpenseController {
 	}
 
 	/**
-	 * Retrieves a paginated list of all expenses for a specific user.
+	 * Retrieves a list of all expenses for a specific user.
 	 *
-	 * @param userId   the ID of the user whose expenses are to be retrieved
-	 * @param pageable the pagination information
-	 * @return a paginated list of expenses
+	 * @param userId the ID of the user whose expenses are to be retrieved
+	 * @return a list of expenses
 	 */
 	@GetMapping("/getAll/{userId}")
-	public Page<Expense> getAllExpenses(@PathVariable Long userId, Pageable pageable) {
-		return expenseService.getAllExpenses(userId, pageable);
+	public List<Expense> getAllExpenses(@PathVariable Long userId) {
+	    return expenseService.getAllExpenses(userId); 
 	}
-
 	/**
 	 * Retrieves the total amount of expenses for a specific user.
 	 *

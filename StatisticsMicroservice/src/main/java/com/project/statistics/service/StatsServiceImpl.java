@@ -79,24 +79,24 @@ public class StatsServiceImpl implements StatsService {
 	 */
 	@Override
 	public StatsDTO getStats(Long userId) {
-		Double totalIncome = incomeClient.getTotalIncome(userId);
-		Double totalExpense = expenseClient.getTotalExpenses(userId);
-		Double balance = totalIncome - totalExpense;
+	    Double totalIncome = incomeClient.getTotalIncome(userId);
+	    Double totalExpense = expenseClient.getTotalExpenses(userId);
 
-		if (balance < 0) {
-			throw new NegativeBalanceException("The user’s balance has fallen below zero.");
-		}
+	    Double balance = totalIncome - totalExpense;
 
-		Stats stats = statsRepository.findByUserId(userId);
-		if (stats == null) {
-			stats = new Stats();
-			stats.setUserId(userId);
-		}
-		stats.setTotalIncome(totalIncome);
-		stats.setTotalExpense(totalExpense);
-		stats.setBalance(balance);
-		statsRepository.save(stats);
+	    // Set balance to 0 if it is less than 0
+	    balance = (balance < 0) ? 0.0 : balance;
 
-		return new StatsDTO(stats.getTotalIncome(), stats.getTotalExpense(), stats.getBalance());
+	    Stats stats = statsRepository.findByUserId(userId);
+	    if (stats == null) {
+	        stats = new Stats();
+	        stats.setUserId(userId);
+	    }
+	    stats.setTotalIncome(totalIncome);
+	    stats.setTotalExpense(totalExpense);
+	    stats.setBalance(balance);
+	    statsRepository.save(stats);
+
+	    return new StatsDTO(stats.getTotalIncome(), stats.getTotalExpense(), stats.getBalance());
 	}
 }

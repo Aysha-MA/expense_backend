@@ -22,7 +22,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	@Query("SELECT SUM(e.amount) FROM Expense e WHERE e.userId = :userId")
 	Double sumAmountByUserId(Long userId);
 
-	Page<Expense> findByUserId(Long userId, Pageable pageable);
+	List<Expense> findByUserId(Long userId);
 
 	List<Expense> findByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate);
 
