@@ -45,4 +45,15 @@ public class StatsController {
 	public GraphDTO getChartData(@RequestParam Long userId) {
 		return statsService.getChartData(userId);
 	}
+	/**
+     * Returns a simple message indicating the dashboard page.
+     *
+     * @param userId the ID of the user
+     * @return a String message indicating the dashboard page
+     */
+    @GetMapping("/dashboard")
+    public String getDashboard() {
+        return statsService.getDashboard();
+    }
+
 }

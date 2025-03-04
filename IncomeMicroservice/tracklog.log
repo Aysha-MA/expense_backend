@@ -455,3 +455,758 @@
 2025-03-04T01:08:16.332+05:30  INFO 33776 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
 2025-03-04T01:08:16.338+05:30  INFO 33776 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3524.0
 2025-03-04T01:10:56.503+05:30  INFO 33776 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T01:12:40.120+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-03-04T01:12:40.122+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application INCOMEMICROSERVICE with eureka with status DOWN
+2025-03-04T01:12:40.122+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1741030960122, current=DOWN, previous=UP]
+2025-03-04T01:12:40.122+05:30  INFO 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083: registering service...
+2025-03-04T01:12:40.124+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-04T01:12:40.151+05:30  INFO 33776 --- [IncomeMicroservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-04T01:12:40.160+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-04T01:12:40.162+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-03-04T01:12:40.176+05:30  INFO 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} exception=I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:926)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:906)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:841)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:702)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.register(RestTemplateEurekaHttpClient.java:87)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:91)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:216)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:490)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:150)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:113)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:174)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:71)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:117)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$3(RestTemplateTransportClientFactory.java:141)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:900)
+	... 21 more
+
+2025-03-04T01:12:40.177+05:30  WARN 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2025-03-04T01:12:40.181+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-03-04T01:12:40.183+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2025-03-04T01:12:40.202+05:30  INFO 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:926)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:906)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:841)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:702)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.register(RestTemplateEurekaHttpClient.java:87)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828)
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125)
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:216)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:490)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:150)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:113)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:174)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:71)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:117)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$3(RestTemplateTransportClientFactory.java:141)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:900)
+	... 22 more
+
+2025-03-04T01:12:40.202+05:30  WARN 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on POST request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2025-03-04T01:12:40.202+05:30  WARN 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - registration failed Cannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.4.jar:2.0.4]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-03-04T01:12:40.219+05:30  WARN 33776 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:828) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:125) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.InstanceInfoReplicator$2.run(InstanceInfoReplicator.java:105) ~[eureka-client-2.0.4.jar:2.0.4]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-03-04T01:12:40.223+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2025-03-04T01:12:40.260+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}, exception=I/O error on DELETE request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt stacktrace=org.springframework.web.client.ResourceAccessException: I/O error on DELETE request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:926)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:906)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:841)
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:702)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateEurekaHttpClient.cancel(RestTemplateEurekaHttpClient.java:100)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:121)
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:80)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74)
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76)
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71)
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919)
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195)
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389)
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136)
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:686)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:643)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1368)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:602)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1361)
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1219)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1180)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1126)
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin.shutdown(SpringApplicationAdminMXBeanRegistrar.java:160)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:64)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:97)
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:193)
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:175)
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:115)
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:52)
+	at java.management/com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:236)
+	at java.management/com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:138)
+	at java.management/com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:252)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:803)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:802)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1520)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1348)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1435)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:841)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: org.apache.hc.client5.http.HttpHostConnectException: Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:760)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:216)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:490)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:144)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:150)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:113)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:174)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.hc.client5.http.classic.HttpClient.executeOpen(HttpClient.java:183)
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:99)
+	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:71)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:117)
+	at org.springframework.cloud.netflix.eureka.http.RestTemplateTransportClientFactory.lambda$restTemplate$3(RestTemplateTransportClientFactory.java:141)
+	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88)
+	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72)
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:81)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:900)
+	... 69 more
+
+2025-03-04T01:12:40.260+05:30  WARN 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: I/O error on DELETE request for "http://localhost:8761/eureka/apps/INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083": Connect to http://localhost:8761 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: getsockopt
+2025-03-04T01:12:40.262+05:30 ERROR 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:919) ~[eureka-client-2.0.4.jar:2.0.4]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:900) ~[eureka-client-2.0.4.jar:2.0.4]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:415) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:239) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:202) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:195) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:389) ~[spring-cloud-context-4.2.0.jar:4.2.0]
+	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:136) ~[spring-cloud-context-4.2.0.jar:4.2.0]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:211) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:686) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:643) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1368) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:602) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1361) ~[spring-beans-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1219) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1180) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.4.2.jar:3.4.2]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1126) ~[spring-context-6.2.2.jar:6.2.2]
+	at org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin.shutdown(SpringApplicationAdminMXBeanRegistrar.java:160) ~[spring-boot-3.4.2.jar:3.4.2]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at java.base/sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:97) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:193) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:175) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:115) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:52) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:236) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:138) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:252) ~[na:na]
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:803) ~[na:na]
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:802) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1520) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1348) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1435) ~[na:na]
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:841) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:714) ~[na:na]
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:598) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:844) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:721) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400) ~[na:na]
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:720) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-03-04T01:12:40.266+05:30  INFO 33776 --- [IncomeMicroservice] [RMI TCP Connection(235)-127.0.0.1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2025-03-04T09:12:16.204+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : Starting IncomeMicroserviceApplication using Java 23.0.1 with PID 21012 (C:\Users\2380378\git\repository2\IncomeMicroservice\target\classes started by 2380378 in C:\Users\2380378\git\repository2\IncomeMicroservice)
+2025-03-04T09:12:16.207+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-03-04T09:12:16.276+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:1234
+2025-03-04T09:12:16.277+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=IncomeMicroservice, profiles=[default], label=null, version=acf2e24bc3463176c2d2dfeb3ffc2ed4d2fa16a3, state=
+2025-03-04T09:12:16.279+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-04T09:12:16.279+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-04T09:12:17.096+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-04T09:12:17.260+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 151 ms. Found 1 JPA repository interface.
+2025-03-04T09:12:17.562+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b89c8f80-243f-3c8f-b732-9e5e2152c457
+2025-03-04T09:12:18.242+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2025-03-04T09:12:18.261+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-04T09:12:18.262+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-04T09:12:18.346+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-04T09:12:18.347+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2067 ms
+2025-03-04T09:12:18.535+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-04T09:12:18.599+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-04T09:12:18.641+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-04T09:12:18.980+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-04T09:12:19.014+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-04T09:12:19.398+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17502f6b
+2025-03-04T09:12:19.401+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-04T09:12:19.465+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-04T09:12:19.485+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-04T09:12:20.416+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-04T09:12:20.465+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-04T09:12:20.781+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-04T09:12:21.483+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-04T09:12:22.203+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-03-04T09:12:22.324+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2025-03-04T09:12:22.433+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-03-04T09:12:22.536+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2025-03-04T09:12:22.565+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2025-03-04T09:12:22.569+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:12:22.577+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2025-03-04T09:12:22.578+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2025-03-04T09:12:22.808+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2025-03-04T09:12:22.809+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2025-03-04T09:12:22.812+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-03-04T09:12:22.813+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1741059742813 with initial instances count: 4
+2025-03-04T09:12:22.819+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application INCOMEMICROSERVICE with eureka with status UP
+2025-03-04T09:12:22.820+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1741059742820, current=UP, previous=STARTING]
+2025-03-04T09:12:22.823+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083: registering service...
+2025-03-04T09:12:22.841+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2025-03-04T09:12:22.843+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2025-03-04T09:12:22.856+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : Started IncomeMicroserviceApplication in 8.605 seconds (process running for 9.386)
+2025-03-04T09:12:22.873+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - registration status: 204
+2025-03-04T09:17:22.585+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:22:22.594+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:23:07.452+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-04T09:23:07.452+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-04T09:23:07.452+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-03-04T09:23:07.562+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T09:23:07.829+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T09:23:07.910+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T09:23:07.926+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T09:23:20.672+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T09:23:20.683+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T09:23:20.711+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T09:23:20.727+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T09:23:21.170+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T09:23:21.202+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3524.0
+2025-03-04T09:23:21.803+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T09:23:21.803+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3524.0
+2025-03-04T09:27:22.599+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:32:22.600+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:37:22.607+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:42:22.613+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:47:22.621+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:52:22.627+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T09:57:22.639+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:02:22.651+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:07:22.660+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:12:22.663+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:17:22.664+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:22:22.675+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:27:22.685+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:32:22.690+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:37:22.692+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:42:22.700+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:47:22.708+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:47:54.312+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [14]
+2025-03-04T10:47:54.328+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 0.0
+2025-03-04T10:47:54.501+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [14, 2025-02-02, 2025-03-04]
+2025-03-04T10:47:54.516+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: []
+2025-03-04T10:47:54.551+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [14, 2025-02-02, 2025-03-04]
+2025-03-04T10:47:54.565+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [14]
+2025-03-04T10:47:54.565+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: []
+2025-03-04T10:47:54.565+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 0.0
+2025-03-04T10:47:58.816+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [14]
+2025-03-04T10:47:58.816+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: []
+2025-03-04T10:47:58.845+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [14]
+2025-03-04T10:47:58.845+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: []
+2025-03-04T10:48:16.709+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [14]
+2025-03-04T10:48:16.718+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 0.0
+2025-03-04T10:48:16.739+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [14, 2025-02-02, 2025-03-04]
+2025-03-04T10:48:16.739+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: []
+2025-03-04T10:48:16.771+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [14, 2025-02-02, 2025-03-04]
+2025-03-04T10:48:16.771+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: []
+2025-03-04T10:48:16.786+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [14]
+2025-03-04T10:48:16.802+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 0.0
+2025-03-04T10:48:26.447+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [14]
+2025-03-04T10:48:26.454+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: []
+2025-03-04T10:48:26.468+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [14]
+2025-03-04T10:48:26.484+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: []
+2025-03-04T10:52:22.719+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:55:19.164+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T10:55:19.171+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T10:55:19.203+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T10:55:19.203+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T10:55:58.225+05:30  WARN 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDate` from String "243565-03-03": Failed to deserialize java.time.LocalDate: (java.time.format.DateTimeParseException) Text '243565-03-03' could not be parsed at index 0]
+2025-03-04T10:56:06.799+05:30  WARN 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalDate` from String "243565-03-03": Failed to deserialize java.time.LocalDate: (java.time.format.DateTimeParseException) Text '243565-03-03' could not be parsed at index 0]
+2025-03-04T10:56:20.535+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: addIncome with arguments: [IncomeDTO(title=sa, description=sas, category=aa, amount=23.0, date=6789-03-03, userId=7)]
+2025-03-04T10:56:20.693+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: addIncome with result: Income(id=29, title=sa, description=sas, category=aa, amount=23.0, date=6789-03-03, userId=7)
+2025-03-04T10:56:20.725+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T10:56:20.741+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=29, title=sa, description=sas, category=aa, amount=23.0, date=6789-03-03, userId=7)]
+2025-03-04T10:56:26.316+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: deleteIncome with arguments: [29, 7]
+2025-03-04T10:56:26.335+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: deleteIncome with result: Income Deleted Successfully
+2025-03-04T10:56:26.389+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T10:56:26.402+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T10:57:22.732+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T10:58:57.455+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: addIncome with arguments: [IncomeDTO(title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T10:58:57.470+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: addIncome with result: Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)
+2025-03-04T10:58:57.488+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T10:58:57.502+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:00:41.330+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [24, 7]
+2025-03-04T11:00:41.330+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7)
+2025-03-04T11:00:46.073+05:30  WARN 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [2] in public com.project.income.entity.Income com.project.income.controller.IncomeController.updateIncome(java.lang.Long,java.lang.Long,com.project.income.dto.IncomeDTO): [Field error in object 'incomeDTO' on field 'title': rejected value []; codes [NotBlank.incomeDTO.title,NotBlank.title,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [incomeDTO.title,title]; arguments []; default message [title]]; default message [Title is mandatory]] ]
+2025-03-04T11:02:10.851+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [30, 7]
+2025-03-04T11:02:10.854+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)
+2025-03-04T11:02:22.741+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:06:34.521+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: addIncome with arguments: [IncomeDTO(title= b, description=bnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn, category=23, amount=2.0, date=2025-03-10, userId=7)]
+2025-03-04T11:06:34.525+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: addIncome with result: Income(id=31, title= b, description=bnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn, category=23, amount=2.0, date=2025-03-10, userId=7)
+2025-03-04T11:06:34.547+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:06:34.552+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=31, title= b, description=bnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn, category=23, amount=2.0, date=2025-03-10, userId=7)]
+2025-03-04T11:06:41.337+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: deleteIncome with arguments: [31, 7]
+2025-03-04T11:06:41.341+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: deleteIncome with result: Income Deleted Successfully
+2025-03-04T11:06:41.379+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:06:41.385+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:07:22.747+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:10:08.437+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:10:08.473+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:10:14.760+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:10:14.787+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:10:21.431+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [24, 7]
+2025-03-04T11:10:21.435+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7)
+2025-03-04T11:10:33.091+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:10:33.097+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sds, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:10:39.177+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: updateIncome with arguments: [23, IncomeDTO(title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)]
+2025-03-04T11:10:39.194+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: updateIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:10:39.222+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:10:39.229+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:10:45.347+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:10:45.370+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:10:59.771+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:10:59.805+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:11:07.486+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: updateIncome with arguments: [23, IncomeDTO(title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)]
+2025-03-04T11:11:07.492+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: updateIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:11:07.517+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:11:07.526+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:12:03.536+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [24, 7]
+2025-03-04T11:12:03.541+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7)
+2025-03-04T11:12:22.755+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:13:45.197+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:13:45.200+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:13:50.549+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:13:50.556+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:13:50.595+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:13:50.602+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)]
+2025-03-04T11:13:52.413+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [23, 7]
+2025-03-04T11:13:52.419+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7)
+2025-03-04T11:15:49.101+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: addIncome with arguments: [IncomeDTO(title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7)]
+2025-03-04T11:15:49.105+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: addIncome with result: Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7)
+2025-03-04T11:15:49.123+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:15:49.127+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7)]
+2025-03-04T11:16:59.157+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:16:59.163+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7)]
+2025-03-04T11:16:59.180+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:16:59.183+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7)]
+2025-03-04T11:17:22.757+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:17:23.654+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: addIncome with arguments: [IncomeDTO(title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T11:17:23.658+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: addIncome with result: Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)
+2025-03-04T11:17:23.679+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:17:23.684+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=23, title=df, description=sdsrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr, category=dad, amount=323.0, date=2025-03-03, userId=7), Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T11:17:30.504+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: deleteIncome with arguments: [23, 7]
+2025-03-04T11:17:30.506+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: deleteIncome with result: Income Deleted Successfully
+2025-03-04T11:17:30.536+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:17:30.539+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=32, title=ds, description=gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg, category=r, amount=23.0, date=2025-03-11, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T11:19:35.930+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: deleteIncome with arguments: [32, 7]
+2025-03-04T11:19:35.935+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: deleteIncome with result: Income Deleted Successfully
+2025-03-04T11:19:35.958+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T11:19:35.961+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T11:19:38.796+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [33, 7]
+2025-03-04T11:19:38.801+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)
+2025-03-04T11:19:47.856+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [30, 7]
+2025-03-04T11:19:47.861+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7)
+2025-03-04T11:22:22.764+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:27:22.773+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:32:22.779+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:37:22.782+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:42:22.787+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:47:22.797+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:52:22.809+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:57:22.824+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T11:57:23.458+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T11:57:23.461+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T11:57:23.465+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T11:57:23.466+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T11:57:23.477+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T11:57:23.481+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T11:57:23.558+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T11:57:23.560+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:02:22.828+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:06:50.534+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x030x010xf40x010x000x010xf00x030x03Z/O#0x0b0x07^Rt0xd70xdd0x96I0xac0xc20xca0xdf;0x82}0x840x8c0x020x8b0x14K0xfa0x840xee0x8f0x0e70x000x01|0x000x000x000x010x000x020x000x030x000x040x000x050x000x060x000x070x000x080x000x090x000x0a0x000x0b0x000x0c0x000x0d0x000x0e0x000x0f0x000x100x000x110x000x120x000x130x000x140x000x150x000x160x000x170x000x180x000x190x000x1a0x000x1b0x00/0x0000x0010x0020x0030x0040x0050x0060x0070x0080x0090x00:0x00;0x00<0x00=0x00>0x00?0x00@0x00A0x00B0x00C0x00D0x00E0x00F0x00g0x00h0x00i0x00j0x00k0x00l0x00m0x000x840x000x850x000x860x000x870x000x880x000x890x000x960x000x970x000x980x000x990x000x9a0x000x9b0x000x9c0x000x9d0x000x9e0x000x9f0x000xa00x000xa10x000xa20x000xa30x000xa40x000xa50x000xa60x000xa70x000xba0x000xbb0x000xbc0x000xbd0x000xbe0x000xbf0x000xc00x000xc10x000xc20x000xc30x000xc40x000xc50x130x010x130x020x130x030x130x040x130x050xc00x010xc00x020xc00x030xc00x040xc00x050xc00x060xc00x070xc00x080xc00x090xc00x0a0xc00x0b0xc00x0c0xc00x0d0xc00x0e0xc00x0f0xc00x100xc00x110xc00x120xc00x130xc00x140xc00x150xc00x160xc00x170xc00x180xc00x190xc0#0xc0$0xc0%0xc0&0xc0'0xc0(0xc0)0xc0*0xc0+0xc0,0xc0-0xc0.0xc0/0xc000xc010xc020xc0r0xc0s0xc0t0xc0u0xc0v0xc0w0xc0x0xc0y0xc0z0xc0{0xc0|0xc0}0xc0~0xc00x7f0xc00x800xc00x810xc00x820xc00x830xc00x840xc00x850xc00x860xc00x870xc00x880xc00x890xc00x8a0xc00x8b0xc00x8c0xc00x8d0xc00x8e0xc00x8f0xc00x900xc00x910xc00x920xc00x930xc00x940xc00x950xc00x960xc00x970xc00x980xc00x990xc00x9a0xc00x9b0xcc0xa80xcc0xa90xcc0xaa0xcc0xab0xcc0xac0xcc0xad0xcc0xae0x020x000x010x00J0x000x0a0x000x0a0x000x080x000x170x000x190x000x180x000x160x000x0b0x000x040x030x000x010x020x000x0d0x0000x00.0x040x030x050x030x060x030x080x070x080x080x080x1a0x080x1b0x080x1c0x080x090x080x0a0x080x0b0x080x040x080x050x080x060x040x010x050x010x060x010x030x030x030x010x030x020x040x020x050x020x060x02...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-03-04T12:06:50.646+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x020x010xc00x010x000x010xbc0x030x02w0xadJ0xe4Y0xb00x910x080x8a0xf00xb90xd60x010xa70x1f0xb1*u0xce@"0x1b0xe90xa5^a0xb9uD0xe40xa0_0x000x01|0x000x000x000x010x000x020x000x030x000x040x000x050x000x060x000x070x000x080x000x090x000x0a0x000x0b0x000x0c0x000x0d0x000x0e0x000x0f0x000x100x000x110x000x120x000x130x000x140x000x150x000x160x000x170x000x180x000x190x000x1a0x000x1b0x00/0x0000x0010x0020x0030x0040x0050x0060x0070x0080x0090x00:0x00;0x00<0x00=0x00>0x00?0x00@0x00A0x00B0x00C0x00D0x00E0x00F0x00g0x00h0x00i0x00j0x00k0x00l0x00m0x000x840x000x850x000x860x000x870x000x880x000x890x000x960x000x970x000x980x000x990x000x9a0x000x9b0x000x9c0x000x9d0x000x9e0x000x9f0x000xa00x000xa10x000xa20x000xa30x000xa40x000xa50x000xa60x000xa70x000xba0x000xbb0x000xbc0x000xbd0x000xbe0x000xbf0x000xc00x000xc10x000xc20x000xc30x000xc40x000xc50x130x010x130x020x130x030x130x040x130x050xc00x010xc00x020xc00x030xc00x040xc00x050xc00x060xc00x070xc00x080xc00x090xc00x0a0xc00x0b0xc00x0c0xc00x0d0xc00x0e0xc00x0f0xc00x100xc00x110xc00x120xc00x130xc00x140xc00x150xc00x160xc00x170xc00x180xc00x190xc0#0xc0$0xc0%0xc0&0xc0'0xc0(0xc0)0xc0*0xc0+0xc0,0xc0-0xc0.0xc0/0xc000xc010xc020xc0r0xc0s0xc0t0xc0u0xc0v0xc0w0xc0x0xc0y0xc0z0xc0{0xc0|0xc0}0xc0~0xc00x7f0xc00x800xc00x810xc00x820xc00x830xc00x840xc00x850xc00x860xc00x870xc00x880xc00x890xc00x8a0xc00x8b0xc00x8c0xc00x8d0xc00x8e0xc00x8f0xc00x900xc00x910xc00x920xc00x930xc00x940xc00x950xc00x960xc00x970xc00x980xc00x990xc00x9a0xc00x9b0xcc0xa80xcc0xa90xcc0xaa0xcc0xab0xcc0xac0xcc0xad0xcc0xae0x020x000x010x000x160x000x0a0x000x0a0x000x080x000x170x000x190x000x180x000x160x000x0b0x000x040x030x000x010x02...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:1575) ~[na:na]
+
+2025-03-04T12:07:22.840+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:12:22.842+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:13:47.708+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:13:47.715+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:13:47.731+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:13:47.739+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:13:50.960+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:13:50.962+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:13:50.976+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:13:50.982+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:13:51.000+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:13:51.003+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:13:51.004+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:13:51.005+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:13:53.742+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:13:53.744+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:13:53.767+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:13:53.773+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:13:53.777+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:13:53.779+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:13:53.790+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:13:53.798+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:13:55.193+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:13:55.196+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:13:55.210+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:13:55.216+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:14:12.390+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:14:12.397+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:14:12.410+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T12:14:12.416+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T12:14:14.078+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:14:14.081+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:14:14.100+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:14:14.105+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:14:14.116+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:14:14.118+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:14:14.118+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-2] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:14:14.122+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:14:17.955+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:14:17.958+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:14:17.975+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:14:17.980+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:14:17.993+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getTotalIncome with arguments: [7]
+2025-03-04T12:14:17.995+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getTotalIncome with result: 3208.0
+2025-03-04T12:14:17.995+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T12:14:18.001+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-7] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T12:17:22.857+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:22:22.869+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:27:22.872+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:32:22.879+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:37:22.881+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:42:22.893+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:47:22.899+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:52:22.911+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T12:57:22.915+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T13:02:22.918+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T13:07:04.244+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T13:07:04.280+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T13:07:04.299+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Entering method: getIncomesByUserIdAndDateBetween with arguments: [7, 2025-02-02, 2025-03-04]
+2025-03-04T13:07:04.305+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-3] com.project.income.aop.LoggingAspect     : Exiting method: getIncomesByUserIdAndDateBetween with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7)]
+2025-03-04T13:07:22.932+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T13:57:04.058+05:30  WARN 21012 --- [IncomeMicroservice] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46m40s497ms434µs100ns).
+2025-03-04T13:58:33.456+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:03:45.188+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:08:45.190+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:12:10.694+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:12:10.701+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-4] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:12:10.714+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:12:10.718+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-5] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:12:22.693+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:12:22.701+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-8] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:12:22.713+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:12:22.716+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-6] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:13:45.205+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:18:45.207+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:23:45.212+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:28:45.222+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:29:55.350+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:29:55.356+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-9] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:29:55.370+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Entering method: getAllIncome with arguments: [7]
+2025-03-04T14:29:55.374+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-10] com.project.income.aop.LoggingAspect     : Exiting method: getAllIncome with result: [Income(id=24, title=ewe, description=qwq, category=eqe, amount=2341.0, date=2025-03-02, userId=7), Income(id=25, title=jn, description=nm , category=nm, amount=860.0, date=2025-02-26, userId=7), Income(id=30, title=mn, description=nn, category=c, amount=4.0, date=6666-09-07, userId=7), Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)]
+2025-03-04T14:29:58.071+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Entering method: getIncome with arguments: [33, 7]
+2025-03-04T14:29:58.091+05:30  INFO 21012 --- [IncomeMicroservice] [http-nio-8083-exec-1] com.project.income.aop.LoggingAspect     : Exiting method: getIncome with result: Income(id=33, title=3, description=dddddddddddddddddddddddddddddddddddddddddddddddddd, category=de, amount=3.0, date=2025-03-16, userId=7)
+2025-03-04T14:33:45.231+05:30  INFO 21012 --- [IncomeMicroservice] [AsyncResolver-bootstrap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:33:48.761+05:30  INFO 21012 --- [IncomeMicroservice] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2025-03-04T14:33:48.783+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application INCOMEMICROSERVICE with eureka with status DOWN
+2025-03-04T14:33:48.784+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1741079028784, current=DOWN, previous=UP]
+2025-03-04T14:33:48.785+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083: registering service...
+2025-03-04T14:33:48.827+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-04T14:33:48.835+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - registration status: 204
+2025-03-04T14:33:48.841+05:30  INFO 21012 --- [IncomeMicroservice] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-04T14:33:48.865+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-04T14:33:48.896+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-04T14:33:48.906+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-04T14:33:48.908+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2025-03-04T14:33:51.914+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2025-03-04T14:33:51.931+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - deregister  status: 200
+2025-03-04T14:33:51.931+05:30  INFO 21012 --- [IncomeMicroservice] [Thread-1] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2025-03-04T14:33:53.585+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : Starting IncomeMicroserviceApplication using Java 23.0.1 with PID 21012 (C:\Users\2380378\git\repository2\IncomeMicroservice\target\classes started by 2380378 in C:\Users\2380378\git\repository2\IncomeMicroservice)
+2025-03-04T14:33:53.586+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-03-04T14:33:53.589+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:1234
+2025-03-04T14:33:53.589+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=IncomeMicroservice, profiles=[default], label=null, version=acf2e24bc3463176c2d2dfeb3ffc2ed4d2fa16a3, state=
+2025-03-04T14:33:53.935+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-04T14:33:53.957+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interface.
+2025-03-04T14:33:54.074+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b89c8f80-243f-3c8f-b732-9e5e2152c457
+2025-03-04T14:33:54.268+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2025-03-04T14:33:54.271+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-04T14:33:54.272+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-04T14:33:54.341+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-04T14:33:54.341+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2025-03-04T14:33:54.473+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-04T14:33:54.480+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-04T14:33:54.509+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-04T14:33:54.511+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-03-04T14:33:54.533+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5fd3897e
+2025-03-04T14:33:54.533+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-03-04T14:33:54.537+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-04T14:33:54.538+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-04T14:33:54.606+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-04T14:33:54.625+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-04T14:33:54.905+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-04T14:33:55.327+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-03-04T14:33:55.382+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2025-03-04T14:33:55.413+05:30  WARN 21012 --- [IncomeMicroservice] [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2025-03-04T14:33:55.471+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2025-03-04T14:33:55.475+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2025-03-04T14:33:55.476+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2025-03-04T14:33:55.511+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2025-03-04T14:33:55.512+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2025-03-04T14:33:55.512+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2025-03-04T14:33:55.512+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1741079035512 with initial instances count: 4
+2025-03-04T14:33:55.517+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application INCOMEMICROSERVICE with eureka with status UP
+2025-03-04T14:33:55.518+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1741079035518, current=UP, previous=STARTING]
+2025-03-04T14:33:55.518+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083: registering service...
+2025-03-04T14:33:55.521+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2025-03-04T14:33:55.523+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2025-03-04T14:33:55.533+05:30  INFO 21012 --- [IncomeMicroservice] [DiscoveryClient-InstanceInfoReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INCOMEMICROSERVICE/LTIN563691.cts.com:IncomeMicroservice:8083 - registration status: 204
+2025-03-04T14:33:55.533+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] c.p.i.IncomeMicroserviceApplication      : Started IncomeMicroserviceApplication in 3.343 seconds (process running for 19302.063)
+2025-03-04T14:33:55.537+05:30  INFO 21012 --- [IncomeMicroservice] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

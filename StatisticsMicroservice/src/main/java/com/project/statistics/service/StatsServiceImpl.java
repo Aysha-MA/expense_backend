@@ -99,4 +99,15 @@ public class StatsServiceImpl implements StatsService {
 
 	    return new StatsDTO(stats.getTotalIncome(), stats.getTotalExpense(), stats.getBalance());
 	}
+
+    /**
+     * Returns a simple message indicating the dashboard page.
+     *
+     * @param userId the ID of the user
+     * @return a String message indicating the dashboard page
+     */
+	@Override
+    public String getDashboard() {
+        return "This is the dashboard page";
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,56 +22,45 @@ import com.service.UserService;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin("*")
 public class AuthController {
 
-    @Autowired
-    private UserService service;
-    @Autowired
-    private JwtService jwtService;
-    
-    @Autowired
-    private UserInfoRepository repo;
+	@Autowired
+	private UserService service;
+	@Autowired
+	private JwtService jwtService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private UserInfoRepository repo;
 
-    @GetMapping("/welcome")		//http://localhost:9090/auth/welcome
-    public String welcome() {
-        return "Welcome this endpoint is not secure";
-    }
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @PostMapping("/new")	//http://localhost:9090/auth/new
-    public String addNewUser(@RequestBody UserInfo userInfo) {
-        return service.addUser(userInfo);
-    }
+	@GetMapping("/welcome") // http://localhost:9090/auth/welcome
+	public String welcome() {
+		return "Welcome this endpoint is not secure";
+	}
+
+	@PostMapping("/new") // http://localhost:9090/auth/new
+	public String addNewUser(@RequestBody UserInfo userInfo) {
+		return service.addUser(userInfo);
+	}
 
 
+	@PostMapping("/authenticate") // http://localhost:9090/auth/authenticate
+	public AuthResponseDto authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+		if (authentication.isAuthenticated()) {
+			UserInfo obj = repo.findByName(authRequest.getUsername()).orElse(null);
+			if (obj != null) {
+				String token = jwtService.generateToken(authRequest.getUsername());
+				return new AuthResponseDto(token, obj.getUserId(), obj.getName(), obj.getEmail());
+			} else {
+				throw new UsernameNotFoundException("User not found!");
+			}
+		} else {
+			throw new UsernameNotFoundException("Invalid user request!");
+		}
+	}
 
-//    @PostMapping("/authenticate")		//http://localhost:9090/auth/authenticate
-//    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-//        if (authentication.isAuthenticated()) {
-//        	UserInfo obj = repo.findByName(authRequest.getUsername()).orElse(null);
-//            return jwtService.generateToken(authRequest.getUsername());
-//        } else {
-//            throw new UsernameNotFoundException("invalid user request !");
-//        }
-//    }
-    
-    @PostMapping("/authenticate") // http://localhost:9090/auth/authenticate
-    public AuthResponseDto authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-      Authentication authentication = authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-      if (authentication.isAuthenticated()) {    
-    	  UserInfo obj = repo.findByName(authRequest.getUsername()).orElse(null);   
-    	  if (obj != null) {           
-    		  String token = jwtService.generateToken(authRequest.getUsername());
-    		  return new AuthResponseDto(token, obj.getUserId());      
-    		  } else {
-    			  throw new UsernameNotFoundException("User not found!");      
-    			  }  
-    	  } else {      
-    		  throw new UsernameNotFoundException("Invalid user request!");   
-    		  }}
-    
 }
