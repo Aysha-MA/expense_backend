@@ -9,4 +9,7 @@ public interface StatsService {
     public abstract String getDashboard();
     
 	public abstract StatsDTO getStats(Long userId);
+	
+	public String deleteStatsByUserId(Long userId);
+
 }

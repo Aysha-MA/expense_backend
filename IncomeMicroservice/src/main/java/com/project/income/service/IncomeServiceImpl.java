@@ -158,4 +158,11 @@ public class IncomeServiceImpl implements IncomeService {
 		}
 		return incomes;
 	}
+	@Override
+    public void deleteIncomesByUserId(Long userId) {
+        List<Income> incomes = incomeRepository.findByUserId(userId);
+        if (!incomes.isEmpty()) {
+            incomeRepository.deleteAll(incomes);
+        }
+}
 }

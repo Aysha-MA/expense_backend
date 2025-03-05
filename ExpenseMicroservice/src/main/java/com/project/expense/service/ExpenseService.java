@@ -20,5 +20,7 @@ public interface ExpenseService {
 	public abstract Double getTotalExpenses(Long userId);
 
 	public abstract List<Expense> getExpenseByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate);
+    
+	public void deleteExpensesByUserId(Long userId);
 
 }

@@ -23,4 +23,7 @@ public interface IncomeService {
 	public abstract Double getTotalIncome(Long userId);
 
 	public abstract List<Income> getIncomesByUserIdAndDateBetween(Long userId, LocalDate startDate, LocalDate endDate);
+   
+	public void deleteIncomesByUserId(Long userId);
+
 }

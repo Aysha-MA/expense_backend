@@ -118,4 +118,15 @@ public class ExpenseController {
 			@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate) {
 		return expenseService.getExpenseByUserIdAndDateBetween(userId, startDate, endDate);
 	}
+	/**
+     * Deletes all expenses for a specific user by user ID.
+     *
+     * @param userId the ID of the user whose expenses are to be deleted
+     * @return a message indicating the result of the deletion
+     */
+	@DeleteMapping("/deleteAll/{userId}")
+	public String deleteAllExpenses(@PathVariable Long userId) {
+	    expenseService.deleteExpensesByUserId(userId);
+	    return "All Expenses Deleted Successfully";
+	}
 }

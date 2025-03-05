@@ -161,4 +161,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 		}
 		return expenses;
 	}
+	@Override
+    public void deleteExpensesByUserId(Long userId) {
+        List<Expense> expenses = expenseRepository.findByUserId(userId);
+        if (!expenses.isEmpty()) {
+            expenseRepository.deleteAll(expenses);
+        }
+    }
 }

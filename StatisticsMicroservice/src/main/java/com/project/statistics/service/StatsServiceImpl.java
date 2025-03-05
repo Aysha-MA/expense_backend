@@ -79,35 +79,53 @@ public class StatsServiceImpl implements StatsService {
 	 */
 	@Override
 	public StatsDTO getStats(Long userId) {
-	    Double totalIncome = incomeClient.getTotalIncome(userId);
-	    Double totalExpense = expenseClient.getTotalExpenses(userId);
+		Double totalIncome = incomeClient.getTotalIncome(userId);
+		Double totalExpense = expenseClient.getTotalExpenses(userId);
 
-	    Double balance = totalIncome - totalExpense;
+		Double balance = totalIncome - totalExpense;
 
-	    // Set balance to 0 if it is less than 0
-	    balance = (balance < 0) ? 0.0 : balance;
+		// Set balance to 0 if it is less than 0
+		balance = (balance < 0) ? 0.0 : balance;
 
-	    Stats stats = statsRepository.findByUserId(userId);
-	    if (stats == null) {
-	        stats = new Stats();
-	        stats.setUserId(userId);
-	    }
-	    stats.setTotalIncome(totalIncome);
-	    stats.setTotalExpense(totalExpense);
-	    stats.setBalance(balance);
-	    statsRepository.save(stats);
+		Stats stats = statsRepository.findByUserId(userId);
+		if (stats == null) {
+			stats = new Stats();
+			stats.setUserId(userId);
+		}
+		stats.setTotalIncome(totalIncome);
+		stats.setTotalExpense(totalExpense);
+		stats.setBalance(balance);
+		statsRepository.save(stats);
 
-	    return new StatsDTO(stats.getTotalIncome(), stats.getTotalExpense(), stats.getBalance());
+		return new StatsDTO(stats.getTotalIncome(), stats.getTotalExpense(), stats.getBalance());
 	}
 
-    /**
-     * Returns a simple message indicating the dashboard page.
-     *
-     * @param userId the ID of the user
-     * @return a String message indicating the dashboard page
-     */
+	/**
+	 * Returns a simple message indicating the dashboard page.
+	 *
+	 * @param userId the ID of the user
+	 * @return a String message indicating the dashboard page
+	 */
 	@Override
-    public String getDashboard() {
-        return "This is the dashboard page";
-    }
+	public String getDashboard() {
+		return "This is the dashboard page";
+	}
+
+	/**
+	 * Deletes statistics for a specific user by user ID.
+	 *
+	 * @param userId the ID of the user whose statistics are to be deleted
+	 * @return a message indicating the result of the deletion
+	 */
+	@Override
+	public String deleteStatsByUserId(Long userId) {
+		Stats stats = statsRepository.findByUserId(userId);
+		if (stats != null) {
+			statsRepository.delete(stats);
+			return "Statistics Deleted Successfully";
+		} else {
+			return "Statistics Not Found";
+		}
+	}
+	
 }

@@ -1,6 +1,8 @@
 package com.project.statistics.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +56,18 @@ public class StatsController {
     @GetMapping("/dashboard")
     public String getDashboard() {
         return statsService.getDashboard();
-    }
+    } 
+    /**
+     * Deletes statistics for a specific user by user ID.
+    *
+    * @param userId the ID of the user whose statistics are to be deleted
+    * @return a message indicating the result of the deletion
+  
+     */
+  
+   @DeleteMapping("/deleteAll/{userId}")
+   public String deleteStatsByUserId(@PathVariable Long userId) {
+       return statsService.deleteStatsByUserId(userId);
+   }
 
 }

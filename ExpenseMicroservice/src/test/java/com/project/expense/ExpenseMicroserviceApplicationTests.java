@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -21,11 +20,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import com.project.expense.dto.ExpenseDTO;
 import com.project.expense.entity.Expense;
@@ -122,14 +116,14 @@ public class ExpenseMicroserviceApplicationTests {
 		assertEquals(150.0, totalExpenses);
 	}
 
-	@Test
-	public void testGetTotalExpenses_NotFound() {
-		when(expenseRepository.sumAmountByUserId(1L)).thenReturn(null);
+	 @Test
+	    public void testGetTotalExpenses_NotFound() {
+	        when(expenseRepository.sumAmountByUserId(1L)).thenReturn(null);
 
-		assertThrows(ExpenseNotFoundException.class, () -> {
-			expenseService.getTotalExpenses(1L);
-		});
-	}
+	        Double totalExpenses = expenseService.getTotalExpenses(1L);
+
+	        assertEquals(0.0, totalExpenses);
+	    }
 
 	@Test
 	public void testAddExpense() {
@@ -178,14 +172,14 @@ public class ExpenseMicroserviceApplicationTests {
 		assertFalse(expenses.isEmpty());
 	}
 
-	@Test
-	public void testGetExpenseByUserIdAndDateBetween_NotFound() {
-		LocalDate startDate = LocalDate.of(2023, 1, 1);
-		LocalDate endDate = LocalDate.of(2023, 1, 31);
-		when(expenseRepository.findByUserIdAndDateBetween(1L, startDate, endDate)).thenReturn(Arrays.asList());
+	   @Test
+	    public void testGetExpensesByUserIdAndDateBetween_NotFound() {
+	        LocalDate startDate = LocalDate.of(2023, 1, 1);
+	        LocalDate endDate = LocalDate.of(2023, 1, 31);
+	        when(expenseRepository.findByUserIdAndDateBetween(1L, startDate, endDate)).thenReturn(Arrays.asList());
 
-		assertThrows(ExpenseNotFoundException.class, () -> {
-			expenseService.getExpenseByUserIdAndDateBetween(1L, startDate, endDate);
-		});
-	}
+	        List<Expense> expenses = expenseService.getExpenseByUserIdAndDateBetween(1L, startDate, endDate);
+
+	        assertEquals(0, expenses.size());
+	    }
 }

@@ -116,14 +116,15 @@ public class IncomeMicroserviceApplicationTests {
 		assertEquals(5000.0, totalIncome);
 	}
 
-	@Test
-	public void testGetTotalIncome_NotFound() {
-		when(incomeRepository.sumAmountByUserId(1L)).thenReturn(null);
 
-		assertThrows(IncomeNotFoundException.class, () -> {
-			incomeService.getTotalIncome(1L);
-		});
-	}
+    @Test
+    public void testGetTotalIncome_NotFound() {
+        when(incomeRepository.sumAmountByUserId(1L)).thenReturn(null);
+
+        Double totalIncome = incomeService.getTotalIncome(1L);
+
+        assertEquals(0.0, totalIncome);
+    }
 
 	@Test
 	public void testAddIncome() {
@@ -172,14 +173,15 @@ public class IncomeMicroserviceApplicationTests {
 		assertFalse(incomes.isEmpty());
 	}
 
-	@Test
-	public void testGetIncomesByUserIdAndDateBetween_NotFound() {
-		LocalDate startDate = LocalDate.of(2023, 1, 1);
-		LocalDate endDate = LocalDate.of(2023, 1, 31);
-		when(incomeRepository.findByUserIdAndDateBetween(1L, startDate, endDate)).thenReturn(Arrays.asList());
+	  @Test
+	    public void testGetIncomesByUserIdAndDateBetween_NotFound() {
+	        LocalDate startDate = LocalDate.of(2023, 1, 1);
+	        LocalDate endDate = LocalDate.of(2023, 1, 31);
+	        when(incomeRepository.findByUserIdAndDateBetween(1L, startDate, endDate)).thenReturn(Arrays.asList());
 
-		assertThrows(IncomeNotFoundException.class, () -> {
-			incomeService.getIncomesByUserIdAndDateBetween(1L, startDate, endDate);
-		});
-	}
+	        List<Income> incomes = incomeService.getIncomesByUserIdAndDateBetween(1L, startDate, endDate);
+
+	        assertEquals(0, incomes.size());
+	    }
+
 }

@@ -117,4 +117,15 @@ public class IncomeController {
 			@RequestParam("startDate") LocalDate startDate, @RequestParam("endDate") LocalDate endDate) {
 		return incomeService.getIncomesByUserIdAndDateBetween(userId, startDate, endDate);
 	}
+	 /**
+     * Deletes all incomes for a specific user by user ID.
+     *
+     * @param userId the ID of the user whose incomes are to be deleted
+     * @return a message indicating the result of the deletion
+     */
+    @DeleteMapping("/deleteAll/{userId}")
+    public String deleteAllIncomes(@PathVariable Long userId) {
+        incomeService.deleteIncomesByUserId(userId);
+        return "All Incomes Deleted Successfully";
+    }
 }
